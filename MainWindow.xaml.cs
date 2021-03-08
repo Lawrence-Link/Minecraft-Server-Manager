@@ -33,9 +33,14 @@ namespace Minecraft_Server_Manager
             }
         }
 
-        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        private void BUTTON_EXIT(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

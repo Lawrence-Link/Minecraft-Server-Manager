@@ -5,11 +5,38 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            
+            <Style x:Key="Button_Menu" TargetType="{x:Type Button}">
+                <Setter Property="Width" Value="24" />
+                <Setter Property="Height" Value="24" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="MyBackgroundElement" BorderBrush="{DynamicResource ForgroundBrush}" BorderThickness="0">
+                                <ContentPresenter x:Name="ButtonContentPresenter" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="MyBackgroundElement" Property="Background" Value="{DynamicResource ForgroundBrush100}"/>
+                                    <Setter TargetName="MyBackgroundElement" Property="Opacity" Value="0.7"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Cursor" Value="Hand" />
+            </Style>
+            
             <ResourceDictionary.MergedDictionaries>
                 <!--  FluentWPF Controls  -->
+                
+                
                 <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
+        
+        
     </Application.Resources>
 </Application>

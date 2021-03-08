@@ -40,8 +40,8 @@
     </Window.Resources>
     <Grid>
         <Rectangle Fill="#FFE8E8E8" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="592" MouseMove="DragMove"/>
-        <Label Content="×" HorizontalAlignment="Left" Margin="560,0,0,0" VerticalAlignment="Top" Width="27" FontSize="21" Foreground="#FF686868" MouseDown="Label_MouseDown" Background="{x:Null}"/>
-        <Label Content="-"  HorizontalAlignment="Left" Margin="528,-1,0,0" VerticalAlignment="Top" Width="27" FontSize="23" Foreground="#FF7A7A7A" FontWeight="Bold" FontStyle="Italic" Height="41"/>
+        <Button Content="✖" Style="{StaticResource Button_Menu}" Margin="559,9,9,369" Width="Auto" Foreground="#FF7E7E7E" BorderBrush="#FF2C2C2C" OpacityMask="#FF2D2D30" Background="#FF2D2D30" FontWeight="Bold" Click="BUTTON_EXIT" FontSize="11" />
+        <Button x:Name="Minimize" Content="_" Style="{StaticResource Button_Menu}" HorizontalAlignment="Left" Margin="522,-2,0,0" VerticalAlignment="Top" Width="34" Height="33" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF878787" FontWeight="ExtraBlack" FontSize="22" Click="Minimize_Click" FontFamily="STHupo" OpacityMask="#FF2B2B2B"/>
         <Label Content="Minecraft Server Manager" HorizontalAlignment="Left" Margin="12,6,0,0" VerticalAlignment="Top" Width="164" FontFamily="Microsoft JhengHei UI" FontWeight="Bold" Height="30" Foreground="#FF575757" MouseMove="DragMove"/>
     </Grid>
 </Window>
