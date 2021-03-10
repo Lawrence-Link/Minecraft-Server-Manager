@@ -7,7 +7,7 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="401.653" Width="591.736" AllowsTransparency="True" WindowStyle="None">
+        Title="MainWindow" Height="403.153" Width="591.736" AllowsTransparency="True" WindowStyle="None">
     <Window.Resources>
         <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
@@ -37,11 +37,59 @@
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
+
+        <DataTemplate x:Key="listBoxTemplate">
+            <StackPanel Margin="4">
+                <DockPanel>
+                    <TextBlock FontWeight="Bold" Text="城市名称：" DockPanel.Dock="Left" Margin="5,0,10,0"/>
+                    <TextBlock Text=" "/>
+                    <TextBlock Text="{Binding ProvinceName}" Foreground="Green" FontWeight="Bold"/>
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock FontWeight="Bold" Text="创建日期：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
+                    <TextBlock Text=" "/>
+                    <TextBlock Text="{Binding DateCreated}" Foreground="DarkOrange"/>
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock FontWeight="Bold" Text="更新日期：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
+                    <TextBlock Text=" "/>
+                    <TextBlock Text="{Binding DateUpdated}" Foreground="Cyan"/>
+                </DockPanel>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
-    <Grid>
-        <Rectangle Fill="#FFE8E8E8" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="592" MouseMove="DragMove"/>
-        <Button Content="✖" Style="{StaticResource Button_Menu}" Margin="559,9,9,369" Width="Auto" Foreground="#FF7E7E7E" BorderBrush="#FF2C2C2C" OpacityMask="#FF2D2D30" Background="#FF2D2D30" FontWeight="Bold" Click="BUTTON_EXIT" FontSize="11" />
-        <Button x:Name="Minimize" Content="_" Style="{StaticResource Button_Menu}" HorizontalAlignment="Left" Margin="522,-2,0,0" VerticalAlignment="Top" Width="34" Height="33" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF878787" FontWeight="ExtraBlack" FontSize="22" Click="Minimize_Click" FontFamily="STHupo" OpacityMask="#FF2B2B2B"/>
-        <Label Content="Minecraft Server Manager" HorizontalAlignment="Left" Margin="12,6,0,0" VerticalAlignment="Top" Width="164" FontFamily="Microsoft JhengHei UI" FontWeight="Bold" Height="30" Foreground="#FF575757" MouseMove="DragMove"/>
+    
+    <!--> Margins <-->
+        <Grid Margin="0,38,0,0">
+        <Grid Margin="36,41,36,55" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "*"/>
+                <ColumnDefinition Width = "*"/>
+                <ColumnDefinition Width = "*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height= "*"/>
+                <RowDefinition Height= "*"/>
+                <RowDefinition Height= "*"/>
+            </Grid.RowDefinitions>
+            <Button Content="yes" Margin="10, 10, 10, 10" Style="{DynamicResource ButtonStyleServerSelection}"/>
+        </Grid>
+        <Rectangle Fill="#99E8E8E8" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="592" MouseMove="DragMove" Margin="0,-38,0,0"/>
+        <Button Content="✖" Style="{StaticResource Button_Menu}" HorizontalAlignment="Left" Margin="561,-29,0,370" Width="Auto" Foreground="Gray" BorderBrush="#FF2C2C2C" OpacityMask="#FF2D2D30" Background="#FF2D2D30" FontWeight="Bold" Click="BUTTON_EXIT" FontSize="11" />
+        <Button x:Name="Minimize" Content="_" Style="{StaticResource Button_Menu}" HorizontalAlignment="Left" Margin="522,-40,0,371" VerticalAlignment="Center" Width="34" Height="34" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF878787" FontWeight="ExtraBlack" FontSize="22" Click="Minimize_Click" FontFamily="STHupo" OpacityMask="#FF2B2B2B"/>
+        <Label Content="Minecraft Server Manager" HorizontalAlignment="Left" Margin="12,-32,0,0" VerticalAlignment="Top" Width="164" FontFamily="Microsoft JhengHei UI" FontWeight="Bold" Height="30" Foreground="#FF575757" MouseMove="DragMove"/>
+        <Ellipse HorizontalAlignment="Left" Height="37" Margin="544.054,317.913,0,0" VerticalAlignment="Top" Width="37" StrokeThickness="5">
+            <Ellipse.Effect>
+                <DropShadowEffect Direction="307" Opacity="0.78" ShadowDepth="1" RenderingBias="Quality"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <LinearGradientBrush EndPoint="1.081,1.365" StartPoint="-0.01,0.24">
+                    <GradientStop Color="#FF00A2FF"/>
+                    <GradientStop Color="#FF1700FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Label Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="548.523,314.673,0,0" Background="{x:Null}" FontSize="24" Foreground="White"/>
     </Grid>
 </Window>

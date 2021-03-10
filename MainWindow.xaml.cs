@@ -23,6 +23,7 @@ namespace Minecraft_Server_Manager
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void DragMove(object sender, MouseEventArgs e)
