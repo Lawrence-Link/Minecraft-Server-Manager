@@ -73,7 +73,7 @@
                 <RowDefinition Height= "*"/>
                 <RowDefinition Height= "*"/>
             </Grid.RowDefinitions>
-            <Button Content="yes" Margin="10, 10, 10, 10" Style="{DynamicResource ButtonStyleServerSelection}"/>
+            <Button Content="Link's SMP" Margin="10, 10, 10, 10" Style="{DynamicResource ButtonStyle1}"/>
         </Grid>
         <Rectangle Fill="#99E8E8E8" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="592" MouseMove="DragMove" Margin="0,-38,0,0"/>
         <Button Content="✖" Style="{StaticResource Button_Menu}" HorizontalAlignment="Left" Margin="561,-29,0,370" Width="Auto" Foreground="Gray" BorderBrush="#FF2C2C2C" OpacityMask="#FF2D2D30" Background="#FF2D2D30" FontWeight="Bold" Click="BUTTON_EXIT" FontSize="11" />
