@@ -13,54 +13,63 @@
         <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
         <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
-        <Style x:Key="ListBoxStyle_Main" TargetType="{x:Type ListBox}">
-            <Setter Property="Background" Value="#FF999999"/>
-            <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
-            <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
 
-        <DataTemplate x:Key="listBoxTemplate">
-            <StackPanel Margin="4">
-                <DockPanel>
-                    <TextBlock FontWeight="Bold" Text="城市名称：" DockPanel.Dock="Left" Margin="5,0,10,0"/>
-                    <TextBlock Text=" "/>
-                    <TextBlock Text="{Binding ProvinceName}" Foreground="Green" FontWeight="Bold"/>
-                </DockPanel>
-                <DockPanel>
-                    <TextBlock FontWeight="Bold" Text="创建日期：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
-                    <TextBlock Text=" "/>
-                    <TextBlock Text="{Binding DateCreated}" Foreground="DarkOrange"/>
-                </DockPanel>
-                <DockPanel>
-                    <TextBlock FontWeight="Bold" Text="更新日期：" DockPanel.Dock="Left" Margin="5,0,5,0"/>
-                    <TextBlock Text=" "/>
-                    <TextBlock Text="{Binding DateUpdated}" Foreground="Cyan"/>
-                </DockPanel>
-            </StackPanel>
-        </DataTemplate>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="ShowShadow">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)" Storyboard.TargetName="border">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0.25" KeySpline="0.86,0.28,0.22,1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="borderShadowOpacity" Opacity="0"  BlurRadius="9"/>
+                            </Border.Effect>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Trigger.ExitActions>
+                                    <RemoveStoryboard BeginStoryboardName="ShowShadow_BeginStoryboard"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard x:Name="ShowShadow_BeginStoryboard" Storyboard="{StaticResource ShowShadow}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
-    
+
     <!--> Margins <-->
-        <Grid Margin="0,38,0,0">
+    <Grid Margin="0,38,0,0">
         <Grid Margin="36,41,36,55" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width = "*"/>
@@ -73,7 +82,7 @@
                 <RowDefinition Height= "*"/>
                 <RowDefinition Height= "*"/>
             </Grid.RowDefinitions>
-            <Button Content="Link's SMP" Margin="10, 10, 10, 10" Style="{DynamicResource ButtonStyle1}"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="154" Height="70" Style="{DynamicResource ButtonStyle}" BorderBrush="{x:Null}" Background="WhiteSmoke"/>
         </Grid>
         <Rectangle Fill="#99E8E8E8" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="592" MouseMove="DragMove" Margin="0,-38,0,0"/>
         <Button Content="✖" Style="{StaticResource Button_Menu}" HorizontalAlignment="Left" Margin="561,-29,0,370" Width="Auto" Foreground="Gray" BorderBrush="#FF2C2C2C" OpacityMask="#FF2D2D30" Background="#FF2D2D30" FontWeight="Bold" Click="BUTTON_EXIT" FontSize="11" />
