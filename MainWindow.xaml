@@ -70,20 +70,6 @@
 
     <!--> Margins <-->
     <Grid Margin="0,38,0,0">
-        <Grid Margin="36,41,36,55" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width = "*"/>
-                <ColumnDefinition Width = "*"/>
-                <ColumnDefinition Width = "*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height= "*"/>
-                <RowDefinition Height= "*"/>
-                <RowDefinition Height= "*"/>
-            </Grid.RowDefinitions>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="154" Height="70" Style="{DynamicResource ButtonStyle}" BorderBrush="{x:Null}" Background="WhiteSmoke"/>
-        </Grid>
         <Rectangle Fill="#99E8E8E8" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="592" MouseMove="DragMove" Margin="0,-38,0,0"/>
         <Button Content="✖" Style="{StaticResource Button_Menu}" HorizontalAlignment="Left" Margin="561,-29,0,370" Width="Auto" Foreground="Gray" BorderBrush="#FF2C2C2C" OpacityMask="#FF2D2D30" Background="#FF2D2D30" FontWeight="Bold" Click="BUTTON_EXIT" FontSize="11" />
         <Button x:Name="Minimize" Content="_" Style="{StaticResource Button_Menu}" HorizontalAlignment="Left" Margin="522,-40,0,371" VerticalAlignment="Center" Width="34" Height="34" Background="#FF2D2D30" BorderBrush="#FF2D2D30" Foreground="#FF878787" FontWeight="ExtraBlack" FontSize="22" Click="Minimize_Click" FontFamily="STHupo" OpacityMask="#FF2B2B2B"/>
@@ -100,5 +86,6 @@
             </Ellipse.Fill>
         </Ellipse>
         <Label Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="548.523,314.673,0,0" Background="{x:Null}" FontSize="24" Foreground="White"/>
+        <ListBox HorizontalAlignment="Left" Height="365" VerticalAlignment="Top" Width="121" Background="WhiteSmoke"/>
     </Grid>
 </Window>
